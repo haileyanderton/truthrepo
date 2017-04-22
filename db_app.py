@@ -1,8 +1,5 @@
 #!/Users/haileyanderton/Documents/python/flask-project/env/bin/python
 
-#   change the path above to match yours
-
-# using python 3
 import pymysql
 from flask import Flask, render_template, request
 from flask_bootstrap import Bootstrap
@@ -20,7 +17,7 @@ dbname   = '/truthrepo'
 socket   = '?unix_socket=/Applications/XAMPP/xamppfiles/var/mysql/mysql.sock'
 dbname   = dbname + socket
 
-# setup required for SQLAlchemy and Bootstrap
+# SQLAlchemy and Bootstrap things
 app.config['SQLALCHEMY_DATABASE_URI'] = userpass + basedir + dbname
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
@@ -29,6 +26,9 @@ bootstrap = Bootstrap(app)
 app.config['BOOTSTRAP_SERVE_LOCAL'] = True
 
 db = SQLAlchemy(app)
+
+# classes: 3 tables and a form
+
 
 class Topic(db.Model):
     __tablename__ = 'topics'
@@ -92,27 +92,12 @@ class TopicForm(FlaskForm):
       ('15', 'Hope') ])
     submit = SubmitField('Submit')
 
-
-# def get_ids_and_topics(source):
-#     ids_and_topics = []
-#     for row in source:
-#         id = Topic.query.filter_by(topic_id=topic_id).all()
-#         topic_link = Topic.query.filter_by(topic=topic).first_or_404()
-#         ids_and_songs.append( [id, topic_link ] )
-#     return ids_and_songs
-
-
-# each table in the database needs a class to be created for it
-# db.Model is required - don't change it
-# this database has only ONE table, socks
-# identify all of your columns by name and data type
-
+# routes
 
 @app.route('/', methods=['GET'])
 def index():
-    # make an instance of the WTF form class we created, above
     form = TopicForm()
-    # pass it to the template
+    # pass the entire form to the template
     return render_template('index.html', form=form)
 
 @app.route('/list', methods=['POST'])
@@ -124,11 +109,6 @@ def topiclist():
 @app.route('/sock/<id>')
 def topic(id):
     the_topic = Topic.query.filter_by(id=topic_id).first_or_404()
-# #      topic = request.form['select']
-# #      #topic_list = Topic.query.filter_by(topic=topic).all()
-# #     # get all columns for the one sock with the supplied id
-# #     verses = Verse.query.filter_by(id=verse_id).all
-# #     # pass them to the template
     return render_template('topic.html', the_topic=the_topic)
 
 # error handlers
