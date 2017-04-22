@@ -20,13 +20,12 @@ Topic List
 
       <h1>Topic</h1>
 
-      <p class="lead">You selected <strong>"{{ topic }}"</strong>.</p>
+      <p class="lead">You selected "{{ topic_name }}".</p>
 
 			<ul>
-				<!-- here is a for-loop to give us all the socks -->
 				{% for topic in topics %}
 
-				<li><a href="{{ url_for('topic', id=topic.topic_id) }}">{{ topic }}</a></li>
+				<li><a href="{{ url_for('topic', id=topic.topic_id) }}">{{ topic_name }}</a></li>
 
 
 				{% endfor %}

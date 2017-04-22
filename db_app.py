@@ -34,6 +34,7 @@ class Topic(db.Model):
     __tablename__ = 'topics'
     topic_id = db.Column(db.Integer, primary_key=True)
     topic = db.Column(db.String)
+    #necessary to relate the tables
     verses = db.relationship('Verse', backref='topic', lazy='dynamic')
     quotes = db.relationship('Quote', backref="topic", lazy='dynamic')
 
@@ -41,7 +42,7 @@ class Topic(db.Model):
         self.topic = topic
 
     def __repr__(self):
-        return '<Topic %s>' % self.topic
+        return '%s' % self.topic
 
 class Verse(db.Model):
     __tablename__ = 'verses'
@@ -50,13 +51,15 @@ class Verse(db.Model):
     book = db.Column(db.String)
     topic_id = db.Column(db.Integer, db.ForeignKey('topics.topic_id'))
 
+#foreign key
+
     def __init__(self, verse, book, topic_id):
         self.verse = verse
         self.book = book
         self.topic_id = topic_id
 
     def __repr__(self):
-        return '<Verse %s>' % self.verse
+        return '%s' % self.verse
 
 class Quote(db.Model):
     __tablename__ = 'quotes'
@@ -65,13 +68,15 @@ class Quote(db.Model):
     author = db.Column(db.String)
     topic_id = db.Column(db.Integer, db.ForeignKey('topics.topic_id'))
 
+# foreign key
+
     def __init__(self, quote, author, topic_id):
         self.quote = quote
         self.author = author
         self.topic_id = topic_id
 
     def __repr__(self):
-        return '<Quote %s>' % self.quote
+        return '%s' % self.quote
 
 class TopicForm(FlaskForm):
     select = SelectField('Choose a topic:', choices=[
@@ -100,16 +105,24 @@ def index():
     # pass the entire form to the template
     return render_template('index.html', form=form)
 
+
+#the form class the '/list' route in the index.html template
 @app.route('/list', methods=['POST'])
 def topiclist():
+    #'select' is thr variable that holds the select field and choices
     topic = request.form['select']
-    topics = Topic.query.filter_by(topic=topic).all()
-    return render_template('list.html', topic=topic, topics=topics)
+    topic_name = Topic.query.filter_by(topic_id=topic).all()
+    topics = Topic.query.filter_by(topic_id=topic).all()
+    return render_template('list.html', topic_name=topic_name, topic=topic, topics=topics)
 
-@app.route('/sock/<id>')
+@app.route('/topic/<id>')
 def topic(id):
-    the_topic = Topic.query.filter_by(id=topic_id).first_or_404()
-    return render_template('topic.html', the_topic=the_topic)
+    #the_topic = Topic.query.filter_by(topic_id=id).first_or_404()
+    # get all the information from all three tables in the database
+    topic_info = Topic.query.filter_by(topic_id=id).all()
+    verse_info = Verse.query.filter_by(topic_id=id).all()
+    quote_info = Quote.query.filter_by(topic_id=id).all()
+    return render_template('topic.html', topic_info=topic_info, verse_info=verse_info, quote_info=quote_info)
 
 # error handlers
 

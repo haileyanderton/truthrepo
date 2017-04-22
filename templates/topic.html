@@ -7,7 +7,7 @@
 
 
 {% block title %}
-Selected Sock: {{ topic }}
+Selected Sock: {{ topic_info.topic }}
 {% endblock %}
 
 
@@ -20,22 +20,27 @@ Selected Sock: {{ topic }}
       <!-- note, the id is not used _in_ the template, although the
 		       route requires the id -->
 
-      <h1>{{ verses }}</h1>
+      <h1>{{ topic_info.topic }}</h1>
 
 			 <ul>
-				<li class="lead"> {{ verses.verse }} by {{ verses.book }}</li>
-				<li class="lead"> {{ verses.verse }} by {{ verses.book }}</li>
-				<li class="lead">{{ verses.verse }} by {{ verses.book }}</li>
-				<li class="lead">{{ quotes.quote }} by {{ quotes.author }}</li>
-				<li class="lead">{{ quotes.quote }} by {{ quotes.author }}</li>
+
+				{% for verse in verse_info %}
+
+ 				<li>{{ verse_info }}</li>
+
+
+ 				{% endfor %}
+
+			</ul>
+
+
+				<li class="lead"> {{ verse_info }} </li>
+
+				<li class="lead">{{ quote_info }}</li>
 			</ul>
 
       <p><a href="{{ url_for('index') }}">Return to search page</a></p>
 
-      <!-- notice how the URL in the link above is rendered for
-           Flask - it needs to name the FUNCTION, not the route
-					 and NOT the template!
-      -->
 
     </div>
   </div>
