@@ -1,5 +1,5 @@
 {% extends 'bootstrap/base.html' %}
-
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block styles %}
 {{ super() }}
@@ -31,8 +31,7 @@ Sock Market
 			<!-- add some goodies to the form - see
 			     https://pythonhosted.org/Flask-Bootstrap/forms.html
 				   for help -->
-  <p><a href="{{ url_for('topiclist') }}">Enter the truthrepo</a></p>
-
+     {{ wtf.quick_form(form, action=url_for("topiclist"), method="post") }}
 
     </div>
   </div>

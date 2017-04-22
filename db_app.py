@@ -75,31 +75,31 @@ class Quote(db.Model):
 
 class TopicForm(FlaskForm):
     select = SelectField('Choose a topic:', choices=[
-      ('Grief', 'Grief'),
-      ('Forgiveness', 'Forgiveness'),
-      ('Trust', 'Trust'),
-      ('Prayer', 'Prayer'),
-      ('Love', 'Love'),
-      ('Doubt', 'Doubt'),
-      ('Faith', 'Faith'),
-      ('Strength', 'Strength'),
-      ('Money', 'Money'),
-      ('Wisdom', 'Wisdom'),
-      ('Peace', 'Peace'),
-      ('Patience', 'Patience'),
-      ('Friendship', 'Friendship'),
-      ('Perseverance', 'Perseverance'),
-      ('Hope', 'Hope') ])
+      ('1', 'Grief'),
+      ('2', 'Forgiveness'),
+      ('3', 'Trust'),
+      ('4', 'Prayer'),
+      ('5', 'Love'),
+      ('6', 'Doubt'),
+      ('7', 'Faith'),
+      ('8', 'Strength'),
+      ('9', 'Money'),
+      ('10', 'Wisdom'),
+      ('11', 'Peace'),
+      ('12', 'Patience'),
+      ('13', 'Friendship'),
+      ('14', 'Perseverance'),
+      ('15', 'Hope') ])
     submit = SubmitField('Submit')
 
 
-def get_ids_and_topics(source):
-    ids_and_topics = []
-    for row in source:
-        id = Topic.query.filter_by(topic_id=topic_id).all()
-        topic_link = Topic.query.filter_by(topic=topic).first_or_404()
-        ids_and_songs.append( [id, topic_link ] )
-    return ids_and_songs
+# def get_ids_and_topics(source):
+#     ids_and_topics = []
+#     for row in source:
+#         id = Topic.query.filter_by(topic_id=topic_id).all()
+#         topic_link = Topic.query.filter_by(topic=topic).first_or_404()
+#         ids_and_songs.append( [id, topic_link ] )
+#     return ids_and_songs
 
 
 # each table in the database needs a class to be created for it
@@ -115,33 +115,21 @@ def index():
     # pass it to the template
     return render_template('index.html', form=form)
 
-
-@app.route('/list')
+@app.route('/list', methods=['POST'])
 def topiclist():
-    # request was imported - line 4, this file -
-    # form is the variable in the wtf.quick_form() - see index.html template -
-    # 'select' is the name quick_form assigned
-    # automatically to the select element - its value comes from the
-    # attribute (value=) in the selected option
-    #topic_id = Topic.query.filter_by(topic_id=topic_id).all()
-    # now we know which style was selected in the form
-    # so we get all socks of _that_ style from the db with filter_by()
-    # and sort the names alphabetically with order_by()
-    ids_and_topics = get_ids_and_topics('topics')
-    #the_topic = Topic.query.filter_by(topic_id=topic_id).first_or_404()
-    # and we pass them to the template
-    return render_template('list.html', pairs=ids_and_topics)
+    topic = request.form['select']
+    topics = Topic.query.filter_by(topic=topic).all()
+    return render_template('list.html', topic=topic, topics=topics)
 
 
-# @app.route('/topic/<id>')
-# def single_topic(id):
-#     topic = request.form['select']
-#      topic = request.form['select']
-#      #topic_list = Topic.query.filter_by(topic=topic).all()
-#     # get all columns for the one sock with the supplied id
-#     verses = Verse.query.filter_by(id=verse_id).all
-#     # pass them to the template
-#     return render_template('topic.html', verses=verses)
+def topic(id):
+    the_topic = Topic.query.filter_by(id=topic_id).first_or_404()
+# #      topic = request.form['select']
+# #      #topic_list = Topic.query.filter_by(topic=topic).all()
+# #     # get all columns for the one sock with the supplied id
+# #     verses = Verse.query.filter_by(id=verse_id).all
+# #     # pass them to the template
+    return render_template('topic.html', the_topic=the_topic)
 
 # error handlers
 

@@ -8,7 +8,7 @@
 
 
 {% block title %}
-Sock List
+Topic List
 {% endblock %}
 
 
@@ -18,15 +18,15 @@ Sock List
   <div class="row">
     <div class="col-xs-12">
 
-      <h1>List of Socks</h1>
+      <h1>Topic</h1>
 
-      <p class="lead">This is a list of all the topics. Select the one about which you want more information.</p>
+      <p class="lead">You selected <strong>"{{ topic }}"</strong>.</p>
 
 			<ul>
 				<!-- here is a for-loop to give us all the socks -->
 				{% for topic in topics %}
 
-				<li> value="{{ pair [0] }}"<a href="{{ url_for('topic_link', id=pair[0]) }}">{{ pair[1] }}</a></li>
+				<li><a href="{{ url_for('topic', id=topic.topic_id) }}">{{ topic }}</a></li>
 
 
 				{% endfor %}

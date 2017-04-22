@@ -7,7 +7,7 @@
 
 
 {% block title %}
-Selected Sock: {{ the_topic }}
+Selected Sock: {{ topic }}
 {% endblock %}
 
 
@@ -23,11 +23,11 @@ Selected Sock: {{ the_topic }}
       <h1>{{ verses }}</h1>
 
 			 <ul>
-				<li class="lead"><strong>Verse 1:</strong> {{ verses.verse }}</li>
-				<li class="lead"><strong>Verse 2:</strong> {{ verses.verse }}</li>
-				<li class="lead"><strong>Verse 3:</strong> {{ verses.verse }}</li>
-				<li class="lead"><strong>Quote 1:</strong> ${{ the_sock.price }}</li>
-				<li class="lead"><strong>Quote 2:</strong> {{ the_sock.updated }}</li>
+				<li class="lead"> {{ verses.verse }} by {{ verses.book }}</li>
+				<li class="lead"> {{ verses.verse }} by {{ verses.book }}</li>
+				<li class="lead">{{ verses.verse }} by {{ verses.book }}</li>
+				<li class="lead">{{ quotes.quote }} by {{ quotes.author }}</li>
+				<li class="lead">{{ quotes.quote }} by {{ quotes.author }}</li>
 			</ul>
 
       <p><a href="{{ url_for('index') }}">Return to search page</a></p>
