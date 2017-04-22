@@ -121,7 +121,7 @@ def topiclist():
     topics = Topic.query.filter_by(topic=topic).all()
     return render_template('list.html', topic=topic, topics=topics)
 
-
+@app.route('/sock/<id>')
 def topic(id):
     the_topic = Topic.query.filter_by(id=topic_id).first_or_404()
 # #      topic = request.form['select']
