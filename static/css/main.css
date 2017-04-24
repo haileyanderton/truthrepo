@@ -1,0 +1,81 @@
+body {
+  background-color: #EFEFEF;
+}
+
+p {
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15pt;
+  color: #363636;
+}
+
+h1 {
+  font-style: 'Helvetica Neue', sans-serif;
+  color: #304C52;
+  text-align: center;
+  font-size: 90pt;
+  width: 100%;
+}
+
+h2 {
+  font-size: 30pt;
+  color: #363636;
+  padding-bottom: 1%;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+
+h3 {
+  color: #FF3B3F;
+  padding-bottom: 2%;
+  text-align: center;
+
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  padding-bottom: 3%;
+}
+
+a:link { color: #304C52; }
+a:hover { color: #89D9E8; }
+
+.container {
+  margin-bottom: 3%;
+  padding: 2%;
+}
+
+.colorful {
+font-size: 15pt;
+background-color: #7CB8C4;
+padding-left: 2%;
+padding-right: 2%;
+padding-top: 1%;
+padding-bottom: 3%;
+margin: auto;
+margin-bottom: 4%;
+width: 100%;
+
+}
+
+.truth {
+  color: #FF3B3F;
+}
+
+.info {
+  font-size: 20pt;
+  text-align: center;
+  padding-bottom: 5%;
+}
+
+.rules {
+  padding-bottom: 2%;
+}
+
+.topicpick {
+  padding-top: 2%;
+  font-size: 25pt;
+}

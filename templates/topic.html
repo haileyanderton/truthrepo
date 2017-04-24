@@ -1,5 +1,4 @@
-{% extends 'bootstrap/base.html' %}
-
+{% extends 'base.html' %}
 {% block styles %}
 {{ super() }}
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
@@ -7,42 +6,61 @@
 
 
 {% block title %}
-Selected Sock: {{ topic_info.topic }}
+{{ Topic }}
 {% endblock %}
 
 
 {% block content %}
 
 <div class="container">
+
+	<div class="intro">
+
+			<h1><span class="truth">TRUTH</span>REPO</h1>
+
+	</div>
+
   <div class="row">
-    <div class="col-xs-12">
 
-      <!-- note, the id is not used _in_ the template, although the
-		       route requires the id -->
+			{% for item in topic_info %}
 
-      <h1>{{ topic_info.topic }}</h1>
+			<h2>{{ item.topic }}</h2>
 
-			 <ul>
+			{% endfor %}
 
-				{% for verse in verse_info %}
+			<div class="colorful">
 
- 				<li>{{ verse_info }}</li>
+			<h3>Verses</h3>
 
+			<ul>
 
- 				{% endfor %}
+			{% for item in verse_info %}
+
+ 			<li>"{{ item.verse }}" {{ item.book }}</li>
+
+ 			{% endfor %}
 
 			</ul>
+		</div>
+
+<div class="colorful">
+			<h3>Quotes</h3>
+
+			<ul>
+
+				{% for item in quote_info %}
+
+					<li>"{{ item.quote }}" {{ item.author }}</li>
+
+				{% endfor %}
+
+				</div>
+
+			<p class="links"><a href="{{ url_for('addVerse') }}">Add a new verse for this topic</a></p>
+			<p class="links"><a href="{{ url_for('addQuote') }}">Add a new quote for this topic</a></p>
+      <p class="links"><a href="{{ url_for('index') }}">Return to search page</a></p>
 
 
-				<li class="lead"> {{ verse_info }} </li>
-
-				<li class="lead">{{ quote_info }}</li>
-			</ul>
-
-      <p><a href="{{ url_for('index') }}">Return to search page</a></p>
-
-
-    </div>
   </div>
 </div>
 

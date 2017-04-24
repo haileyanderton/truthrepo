@@ -1,5 +1,5 @@
-{% extends 'bootstrap/base.html' %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block styles %}
 {{ super() }}
@@ -8,7 +8,7 @@
 
 
 {% block title %}
-Truthrepo
+TruthRepo
 {% endblock %}
 
 
@@ -16,24 +16,29 @@ Truthrepo
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-12 intro">
 
-      <h1>TRUTHREPO</h1>
-
-      <p class="lead">What's going on? Pick a topic below!</p>
+      	<h1><span class="truth">TRUTH</span>REPO</h1>
+      		<p class="info">Topical bible verses and faith-based quotes.</p>
 
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="col-xs-12 col-md-3 colorful">
+		<div class="colorful">
+
+			<p class="rules">Welcome to TruthRepo! Choose a topic below to access bible verses and quotes from Christian authors regarding that topic. Don't see your favorite quote or verse mentioned? Click one of the links below!</p>
 
 			<!-- add some goodies to the form - see
 			     https://pythonhosted.org/Flask-Bootstrap/forms.html
 				   for help -->
      {{ wtf.quick_form(form, action=url_for("topiclist"), method="post") }}
 
+
     </div>
+
+				 <p class="links"><a href="{{ url_for('addVerse') }}">Add a new verse</a></p>
+				 <p class="links"><a href="{{ url_for('addQuote') }}">Add a new quote</a></p>
   </div>
 </div>
 

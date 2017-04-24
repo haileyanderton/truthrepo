@@ -1,5 +1,5 @@
-{% extends 'bootstrap/base.html' %}
-{% import "bootstrap/wtf.html" as wtf %}
+{% extends 'base.html' %}
+{% import 'bootstrap/wtf.html' as wtf %}
 
 {% block styles %}
 {{ super() }}
@@ -8,7 +8,7 @@
 
 
 {% block title %}
-Topic List
+Topic
 {% endblock %}
 
 
@@ -16,22 +16,30 @@ Topic List
 
 <div class="container">
   <div class="row">
-    <div class="col-xs-12">
 
-      <h1>Topic</h1>
+			<div class="intro">
 
-      <p class="lead">You selected "{{ topic_name }}".</p>
+	      	<h1><span class="truth">TRUTH</span>REPO</h1>
 
-			<ul>
-				{% for topic in topics %}
+			</div>
 
-				<li><a href="{{ url_for('topic', id=topic.topic_id) }}">{{ topic_name }}</a></li>
+
+				<p>Click on the topic to get verses and quotes.</p>
+
+<div class="colorful">
+
+				{% for item in topics %}
+
+	<p class="topicpick"><a href="{{ url_for('topic', id=item.topic_id) }}">{{ item.topic }}</a></p>
 
 
 				{% endfor %}
-			</ul>
+
 
 		</div>
+
+<p class="links"><a href="{{ url_for('index') }}">Return to search page</a></p>
+
 	</div>
 </div>
 
