@@ -6,10 +6,9 @@
 
 	<title>{{ the_title }}</title>
 
-<link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:700" rel="stylesheet">
 
-
-	<link rel= "stylesheet" type= "text/css" href= "{{ 	url_for('static',filename='main.css') }}">
+	<!-- note the special href for files in the Flask "static" folder -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 
 </head>
 
@@ -17,9 +16,17 @@
 
 <div id="container">
 
+  <!-- Jinja2 directives: page contents will go between them -->
   {% block body %}
   {% endblock %}
 
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+
+</script>
+
 </body>
+<footer>TruthRepo by Hailey Anderton. See the Github Repo <a href="https://github.com/haileyanderton/truthrepo">here</a>.</footer>
+
 </html>

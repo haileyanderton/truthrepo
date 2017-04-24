@@ -43,6 +43,16 @@ li {
 a:link { color: #304C52; }
 a:hover { color: #89D9E8; }
 
+footer {
+
+font-size: 15pt;
+color: #304C52;
+padding-bottom: 2%;
+text-align: center;
+
+}
+
+
 .container {
   margin-bottom: 3%;
   padding: 2%;
@@ -76,6 +86,7 @@ width: 100%;
 }
 
 .topicpick {
+  text-decoration: underline;
   padding-top: 2%;
   font-size: 25pt;
 }

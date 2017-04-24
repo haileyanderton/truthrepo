@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
+<!-- {% extends 'bootstrap/base.html' %} -->
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block styles %}
 {{ super() }}
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
 
@@ -25,9 +26,9 @@ TruthRepo
 	</div>
 
 	<div class="row">
-		<div class="colorful">
+		<div class="col-xs-12 col-md-3 colorful">
 
-			<p class="rules">Welcome to TruthRepo! Choose a topic below to access bible verses and quotes from Christian authors regarding that topic. Don't see your favorite quote or verse mentioned? Click one of the links below!</p>
+			<p class="rules">Welcome to TruthRepo! Choose a topic below to access bible verses and quotes from Christian authors regarding that topic. Don't see your favorite quote or verse mentioned? Click one of the links below to add your own!</p>
 
 			<!-- add some goodies to the form - see
 			     https://pythonhosted.org/Flask-Bootstrap/forms.html
@@ -41,5 +42,7 @@ TruthRepo
 				 <p class="links"><a href="{{ url_for('addQuote') }}">Add a new quote</a></p>
   </div>
 </div>
+
+<footer>TruthRepo by Hailey Anderton. See the Github Repo <a href="https://github.com/haileyanderton/truthrepo">here</a>.</footer>
 
 {% endblock %}

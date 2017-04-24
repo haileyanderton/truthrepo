@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
-{% import 'bootstrap/wtf.html' as wtf %}
+<!-- {% extends 'bootstrap/base.html' %} -->
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block styles %}
 {{ super() }}
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
 
@@ -40,7 +41,7 @@ Add new record
 
 		{% else %}
 		<!-- the form is displayed when template opens via GET not POST -->
-		<div class="colorful">
+		<div class="col-xs-12 col-md-6 colorful">
 
        {{ wtf.quick_form(form3) }}
 
@@ -52,5 +53,7 @@ Add new record
   </div>
 </div>
 </div>
+
+<footer>TruthRepo by Hailey Anderton. See the Github Repo <a href="https://github.com/haileyanderton/truthrepo">here</a>.</footer>
 
 {% endblock %}

@@ -167,7 +167,6 @@ def index():
 def topiclist():
     #'select' is thr variable that holds the select field and choices
     topic = request.form['select']
-    # topic_name = Topic.query.filter_by(topic_id=topic).all()
     topics = Topic.query.filter_by(topic_id=topic).all()
     return render_template('list.html', topic=topic, topics=topics)
 

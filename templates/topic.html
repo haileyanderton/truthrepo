@@ -1,6 +1,8 @@
-{% extends 'base.html' %}
+<!-- {% extends 'bootstrap/base.html' %} -->
+
 {% block styles %}
 {{ super() }}
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 	<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 {% endblock %}
 
@@ -28,7 +30,7 @@
 
 			{% endfor %}
 
-			<div class="colorful">
+			<div class="col-xs-12 colorful">
 
 			<h3>Verses</h3>
 
@@ -43,7 +45,7 @@
 			</ul>
 		</div>
 
-<div class="colorful">
+<div class="col-xs-12 colorful">
 			<h3>Quotes</h3>
 
 			<ul>
@@ -63,5 +65,7 @@
 
   </div>
 </div>
+
+<footer>TruthRepo by Hailey Anderton. See the Github Repo <a href="https://github.com/haileyanderton/truthrepo">here</a>.</footer>
 
 {% endblock %}
